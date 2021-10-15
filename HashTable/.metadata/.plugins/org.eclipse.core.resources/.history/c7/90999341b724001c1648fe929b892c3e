@@ -1,0 +1,28 @@
+
+
+class Pair{
+	int key;
+	int value;
+	public Pair(int key, int value) {
+		this.key=key;
+		this.value=value;
+	}
+	public int key() {
+		return key;
+	}
+	public int value() {
+		return value;
+	}
+	
+}
+
+
+public class Test_yo {
+	
+	public static void main (String args[]) {
+		Pair a =new Pair(1,2);
+		
+		System.out.println(a.key());
+	}
+
+}

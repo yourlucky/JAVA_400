@@ -1,0 +1,6 @@
+
+public class HahstableMap {
+	public static void main (String args[]) {
+		System.out.println("hi there~!");
+	}
+}

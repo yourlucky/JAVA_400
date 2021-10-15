@@ -1,0 +1,65 @@
+
+import java.util.LinkedList;
+
+class Pair{
+	int key;
+	int value;
+	public Pair(int key, int value) {
+		this.key=key;
+		this.value=value;
+	}
+	public int key() {
+		return key;
+	}
+	public int value() {
+		return value;
+	}	
+}
+
+
+public class HashtableMap {
+	int KL_size=0;
+	LinkedList<Pair> [] key_list;
+	
+	public HashtableMap()
+	{
+		this.KL_size=20;
+		this.key_list=new LinkedList[this.KL_size];
+	}
+	
+	public void twice() {
+		System.out.println("Comming Soon");
+		int t_index=0;
+		
+		
+		int temp_size=this.KL_size*2;
+		LinkedList<Pair> [] tmp_key_list= new LinkedList[temp_size];
+		
+		
+		for (int i=0; i<this.KL_size;i++)
+		{
+			if (this.key_list[i] != null)
+			{
+				for(int j=0; j<this.key_list[i].size();j++)
+				{
+					int location = this.key_list[i].get(j).key() %temp_size;
+					
+					if (tmp_key_list[location] == null) {
+						tmp_key_list[location]= new LinkedList<Pair>();	
+						tmp_key_list[location].add(new Pair(this.key_list[i].get(j).key(), this.key_list[i].get(j).value()) );
+					}
+					else {
+						tmp_key_list[location].add(new Pair(this.key_list[i].get(j).key(), this.key_list[i].get(j).value()) );
+					}
+				}
+			}
+		}
+		this.key_list=tmp_key_list;
+		this.KL_size=temp_size;
+	}
+}
+
+
+public class testset43 {
+
+}

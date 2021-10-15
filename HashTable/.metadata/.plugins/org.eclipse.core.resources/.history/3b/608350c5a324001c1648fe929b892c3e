@@ -1,0 +1,96 @@
+import java.util.NoSuchElementException;
+import java.util.LinkedList;
+
+/*
+public interface MapADT<KeyType, ValueType> {
+
+	public boolean put(KeyType key, ValueType value);
+	public ValueType get(KeyType key) throws NoSuchElementException;
+	public int size();
+	public boolean containsKey(KeyType key);
+	public ValueType remove(KeyType key);
+	public void clear();
+	
+}
+*/
+
+public interface MapADT {
+
+	public boolean put(int key, int value);
+	public int get(int key) throws NoSuchElementException;
+	public int size();
+	public boolean containsKey(int key);
+	public int remove(int key);
+	public void clear();
+	
+}
+
+
+
+public class HashtableMap implements MapADT {
+	int KL_size=0;
+	LinkedList[] key_list=new LinkedList[20];
+	public HashtableMap()
+	{
+		this.KL_size=20;
+		this.key_list=new LinkedList[this.KL_size];
+
+	}
+	public HashtableMap(int capacity)
+	{
+		this.KL_size=capacity;		
+		this.key_list=new LinkedList[this.KL_size];
+		
+	}
+	
+	public boolean put(int key, int value)
+	{
+		int location = key%this.size();
+		System.out.println(location);
+		if (this.key_list[location] == null) {
+			System.out.println(this.key_list[location]);
+			this.key_list[location].add(value);
+			return true;
+		}
+		else
+		{
+			System.out.println("full");
+			return false;
+		}
+		
+	}
+	
+	public int get(int key) throws NoSuchElementException
+	{
+		int location = key%this.size();
+		if (this.key_list[location] == null) {
+			System.out.println("None");
+			return 0;
+		}
+		else
+		{
+			System.out.println("find "+key_list[location]);
+			return 1;
+		}
+	}
+		
+	
+	public int size() 
+	{
+		return this.KL_size;
+	}
+	
+	
+	
+	public static void main (String args[]) {
+		
+		HashtableMap a= new HashtableMap(30);
+		System.out.println(a.size());
+		a.put(1,100);
+		//a.get(1);
+		
+	}
+
+}
+
+

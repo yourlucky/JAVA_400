@@ -1,0 +1,36 @@
+import java.util.LinkedList;
+import java.util.NoSuchElementException;
+
+class Yoon{
+	
+	int keys=100;
+	
+	public int get(int key) throws NoSuchElementException
+	{
+		if(key==1)
+			throw new NoSuchElementException();
+		else {
+			System.out.print("hi");
+			return this.keys;
+			
+		}
+			
+	}
+	
+	
+}
+
+
+public class Test_2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Yoon b = new Yoon();
+		
+		b.get(2);
+		b.get(1);
+
+	}
+
+}

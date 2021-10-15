@@ -1,0 +1,191 @@
+import java.util.NoSuchElementException;
+import java.util.LinkedList;
+
+/*
+public interface MapADT<KeyType, ValueType> {
+
+	public boolean put(KeyType key, ValueType value);
+	public ValueType get(KeyType key) throws NoSuchElementException;
+	public int size();
+	public boolean containsKey(KeyType key);
+	public ValueType remove(KeyType key);
+	public void clear();
+	
+}
+*/
+
+interface MapADT {
+
+	public boolean put(int key, int value);
+	public int get(int key) throws NoSuchElementException;
+	public int size();
+	public boolean containsKey(int key);
+	public int remove(int key);
+	public void clear();
+	
+}
+
+class Pair{
+	int key;
+	int value;
+	public Pair(int key, int value) {
+		this.key=key;
+		this.value=value;
+	}
+	public int key() {
+		return key;
+	}
+	public int value() {
+		return value;
+	}
+	
+}
+
+
+
+public class HashtableMap implements MapADT {
+	int KL_size=0;
+	LinkedList<Pair> [] key_list;
+
+	public HashtableMap()
+	{
+		this.KL_size=20;
+		this.key_list=new LinkedList[this.KL_size];
+
+	}
+	
+	public HashtableMap(int capacity)
+	{
+		this.KL_size=capacity;		
+		this.key_list=new LinkedList[this.KL_size];
+		
+	}
+	
+	public boolean containsKey(int key)
+	{
+		int location = key%this.size();
+		
+		if (this.key_list[location] == null) {
+			return false;		
+		}
+		
+		for(int i=0; i<this.key_list[location].size(); i++ )
+		{
+			if (this.key_list[location].get(i).key() == key)
+				return true;
+		}
+		
+		return false;
+	}
+	
+	public boolean put(int key, int value)
+	{
+		int location = key%this.size();
+		
+		if (this.key_list[location] == null) {
+			Pair pair = new Pair(key, value);
+			this.key_list[location]= new LinkedList<Pair>();						
+			this.key_list[location].add(pair);
+			
+			return true;
+		}
+		else
+		{
+			if (containsKey(key) == true)
+				return false;
+			
+			else
+			{
+				Pair pair = new Pair(key, value);
+				this.key_list[location].add(pair);
+				return true;
+			}
+			
+		}
+	}
+	
+	public int get(int key) throws NoSuchElementException
+	{
+		int location = key%this.size();
+		if (this.key_list[location] == null) {
+			System.out.println("None");
+			throw new NoSuchElementException();
+		}
+		else
+		{
+			for(int i=0; i<this.key_list[location].size(); i++ )
+			{
+				if (this.key_list[location].get(i).key() == key)
+				{
+					return this.key_list[location].get(i).value();
+				}
+			}
+			throw new NoSuchElementException();
+		}
+	}
+		
+	public int remove(int key)
+	{
+		if (containsKey(key) == true)
+		{
+			int location = key%this.size();
+			for(int i=0; i<this.key_list[location].size(); i++ )
+			{
+				if (this.key_list[location].get(i).key() == key)
+				{
+					int rvalue=key_list[location].get(i).value();
+					key_list[location].remove(i);
+					
+					return rvalue;
+				}
+			}
+		}	
+		System.out.println("no key");
+		return 0;	
+	
+	}
+	public void clear()
+	{
+		for (int i=0; i<this.KL_size; i++)
+		{
+			this.key_list[i]=null;
+		}
+		
+	}
+	
+	public int size() 
+	{
+		int count=0;
+		System.out.println("Wow");
+		for (int i=0; i<this.KL_size;i++)
+		{
+			if (this.key_list[i] != null)
+				count += this.key_list[i].size();
+		}
+		return count;
+	}
+	
+	
+	
+	
+	public static void main (String args[]) {
+		
+		HashtableMap a= new HashtableMap(30);
+		//System.out.println(a.size());
+		a.put(1,100);
+		a.put(2,100);
+		a.put(4,100);
+		a.put(32,200);
+		System.out.println(a.get(1));
+		//a.get(22);
+		System.out.println(a.get(32));
+		a.remove(32);
+		a.remove(32);
+		a.remove(37);
+		System.out.println(a.size());
+		
+	}
+
+}
+
+
