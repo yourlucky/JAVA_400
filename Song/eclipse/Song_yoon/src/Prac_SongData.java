@@ -28,20 +28,21 @@ public class Prac_SongData  implements SongDataInterface_p  {
 			for(int i=0; i<FileLine.length();i++)
 			{
 				if(FileLine.charAt(i)=='"')
+				{
 					quot_count++;
+					if(FileLine.charAt(i+1)=='"')
+						continue;
+				}
 				if(FileLine.charAt(i)==',' && quot_count%2==0)
+				{
 					comma_count++;
-				
-				if(comma_count==1) {
-					if(FileLine.charAt(i)!=',' && FileLine.charAt(i)!='"')
+					continue;
+				}
+				if(comma_count==1) 
 						T_title += FileLine.charAt(i);
-				}
 				
-				if(comma_count==2) {
-					if(FileLine.charAt(i)!=',' && FileLine.charAt(i)!='"')
-						T_artist += FileLine.charAt(i);
-				}
-					
+				if(comma_count==2) 
+						T_artist += FileLine.charAt(i);				
 				
 				if(comma_count==4) {
 					if(FileLine.charAt(i)!=',' && FileLine.charAt(i)!='"')
@@ -50,9 +51,15 @@ public class Prac_SongData  implements SongDataInterface_p  {
 				if(comma_count==5)
 					break;									
 			}
+			int T_l = T_title.length();
+			String  S_T_title = T_title.substring(1,T_l-1);
+			this.Title = S_T_title.strip();
 			
-			this.Title = T_title;
-			this.Artist=T_artist;
+			int A_l = T_artist.length();
+			String  S_T_artist = T_artist.substring(1,A_l-1);
+			this.Artist=S_T_artist.strip();
+			
+			
 			this.Year = Integer.parseInt(T_year);
 		}
 		
@@ -68,19 +75,22 @@ public class Prac_SongData  implements SongDataInterface_p  {
 			for(int i=0; i<FileLine.length();i++)
 			{
 				if(FileLine.charAt(i)=='"')
+				{
 					quot_count++;
+					if(FileLine.charAt(i+1)=='"')
+						continue;
+						
+				}
 				if(FileLine.charAt(i)==',' && quot_count%2==0)
+				{
 					comma_count++;
-				
-				if(comma_count==0) {
-					if(FileLine.charAt(i)!=',' && FileLine.charAt(i)!='"')
+					continue;
+				}
+				if(comma_count==0)
 						T_title += FileLine.charAt(i);
-				}
 				
-				if(comma_count==3) {
-					if(FileLine.charAt(i)!=',' && FileLine.charAt(i)!='"')
+				if(comma_count==3) 
 						T_artist += FileLine.charAt(i);
-				}
 					
 				
 				if(comma_count==6) {
@@ -90,11 +100,19 @@ public class Prac_SongData  implements SongDataInterface_p  {
 				if(comma_count==7)
 					break;									
 			}
-			this.Title = T_title;
-			this.Artist=T_artist;
 			
-			int kk = T_year.length();
-			String Numb_= T_year.substring(kk-4,kk);
+			int T_l = T_title.length();
+			String  S_T_title = T_title.substring(1,T_l-1);
+			this.Title = S_T_title.strip();
+			
+			int A_l = T_artist.length();
+			String  S_T_artist = T_artist.substring(1,A_l-1);
+			this.Artist=S_T_artist.strip();
+			
+			String TT_year=T_year.strip();
+			int kk = TT_year.length();
+			//System.out.println(T_year);
+			String Numb_= TT_year.substring(kk-4,kk);
 			this.Year = Integer.parseInt(Numb_);
 						
 		}		

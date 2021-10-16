@@ -1,15 +1,25 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.io.FileInputStream;
 
 
+interface SongLoaderInterface_P {
+    public List<SongDataInterface> loadFile(String csvFilePath) throws FileNotFoundException;
+    public List<SongDataInterface> loadAllFilesInDirectory(String directoryPath) throws FileNotFoundException;
+}
 
-public class Prac_SongLoader  {
+
+//public class Prac_SongLoader  implements SongLoaderInterface_P {
+
+public class Prac_SongLoader {
 
 
     public List<String> loadFile(String csvFilePath) throws FileNotFoundException {
@@ -56,55 +66,6 @@ public class Prac_SongLoader  {
     	}
     	    	
         return File_list;
-    }
-    	
- 
-               
-        public static void main(String args[]) throws IOException {
-        	
-        	Prac_SongLoader A = new Prac_SongLoader();        	
-        	String k = "C:\\Users\\yoonc\\Desktop\\lecture note\\CS 400\\homework\\Song\\data";
-        	List<String> B = new LinkedList();
-        	B = A.loadAllFilesInDirectory(k);
-        	
-        	
-        	//System.out.print(b.get(1));
-        	List<String> C = new LinkedList();
-        	C = A.loadFile(B.get(1));
-        	Prac_SongData D = new Prac_SongData(C.get(0),B.get(1));
-        	
-        	System.out.println(D.getTitle());
-        	System.out.println(D.getArtist());   	
-        	System.out.println(D.getYearPublished());
-        	
-        	
-        	System.out.println("^^^^^^^^^^^^^^^^");
-        	
-        	C = A.loadFile(B.get(0));        	
-        	//System.out.println(C.get(0));
-        	Prac_SongData D2 = new Prac_SongData(C.get(0),B.get(0));        	
-        	System.out.println(D2.getTitle());
-        	System.out.println(D2.getArtist());   	
-        	System.out.print(D2.getYearPublished());
-        	
-        	//System.out.println(c.get(1));
-        	
-        	
-        	
-        	//System.out.print(D.getYearPublished());
-        	
-        	//System.out.println(b);
-        	/*
-        	for (String file_path : b)
-        	{
-        		List<String> c = new LinkedList();
-        		c = A.loadFile(file_path);
-        		
-        		System.out.println(c.get(0));
-        		System.out.println(c.get(1));
-        		System.out.println("*****************");
-        	}
-        	*/        	
-        	
-        }
-    }
+    	}
+    	 
+		}
