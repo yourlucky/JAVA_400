@@ -1,21 +1,19 @@
 
-interface SongDataInterface_p {
+interface SongDataInterface_P {
     public String getTitle();
     public String getArtist();
     public int getYearPublished();
 }
 
-public class Prac_SongData  implements SongDataInterface_p  {
+public class Prac_SongData  implements SongDataInterface_P  {
 	
 	public String Title;
 	public String Artist;
 	public int Year;
 	
 	
-	Prac_SongData(String FileLine,String FileName)
+	Prac_SongData(String FileLine,String Type_)
 	{
-		int k = FileName.length();
-		String Type_=FileName.substring(k-7,k-4);
 		
 		if(Type_.equals("10s")) {
 			int comma_count=0;
