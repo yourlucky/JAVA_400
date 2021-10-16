@@ -10,6 +10,16 @@ interface SongDataInterface {
 // public class (implemented primarilly in final app week)
 
 public class SongData implements SongDataInterface {
+	
+	public String Title;
+	public String Artist;
+	public int Year;
+	
+	SongData(String FileLine)
+	{
+		
+	}
+	
 
     @Override
     public String getTitle() {

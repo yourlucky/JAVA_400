@@ -1,0 +1,13 @@
+import java.io.*;
+
+
+public class practice {
+	
+	public static void main(String[] args) {
+		
+		String Yoon ="absce";
+		
+		System.out.println(Yoon.charAt(2));
+	
+	}
+}

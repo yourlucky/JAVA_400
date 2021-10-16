@@ -1,0 +1,39 @@
+
+interface SongDataInterface {
+    public String getTitle();
+    public String getArtist();
+    public int getYearPublished();
+}
+
+public class Prac_SongData  implements SongDataInterface  {
+	
+	public String Title;
+	public String Artist;
+	public int Year;
+	
+	Prac_SongData(String FileLine)
+	{
+		
+	}
+	
+	
+	
+	 @Override
+	    public String getTitle() {
+	        // TODO Auto-generated method stub
+	        return null;
+	    }
+
+	    @Override
+	    public String getArtist() {
+	        // TODO Auto-generated method stub
+	        return null;
+	    }
+
+	    @Override
+	    public int getYearPublished() {
+	        // TODO Auto-generated method stub
+	        return 0;
+	    }
+
+}

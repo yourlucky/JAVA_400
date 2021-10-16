@@ -1,0 +1,15 @@
+import java.io.IOException;
+
+public class Prac_Prac {
+
+	
+	String s= "July, 1965";
+	
+	int kk = s.length();
+	String Numb_=s.substring(kk-4,kk);
+	
+	 public static void main(String args[]) throws IOException {
+	
+	System.out.println(Numb_);
+	 }
+}
