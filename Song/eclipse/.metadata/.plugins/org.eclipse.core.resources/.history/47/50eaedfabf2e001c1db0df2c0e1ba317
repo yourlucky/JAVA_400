@@ -25,7 +25,7 @@ public class Prac_main {
 			int num2=10;
 			int num3=400;
 		
-			System.out.println(C1.get(num1).getArtist()+" & "+C1.get(num1).getTitle()+" & "+C1.get(num1).getYearPublished());
+			//System.out.println(C1.get(num1).getArtist()+" & "+C1.get(num1).getTitle()+" & "+C1.get(num1).getYearPublished());
 			//System.out.println(C1.get(num2).getArtist()+" & "+C1.get(num2).getTitle()+" & "+C1.get(num2).getYearPublished());
 			//System.out.println(C1.get(num3).getArtist()+" & "+C1.get(num3).getTitle()+" & "+C1.get(num3).getYearPublished());
 

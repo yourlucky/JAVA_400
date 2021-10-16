@@ -64,7 +64,7 @@ public class SongLoader implements SongLoaderInterface {
     	for (String name : fileList)
     	{
     		String tmp;
-    		tmp=directoryPath+"/"+name;
+    		tmp=directoryPath+"\\"+name;
     		File_list.add(tmp);
     	}
     	
