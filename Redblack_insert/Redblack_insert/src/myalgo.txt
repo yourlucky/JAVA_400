@@ -1,0 +1,39 @@
+if(newNode ==root) {
+    		root.isBlack=true;//Specification 2
+    		return;
+    	}
+    	if(newNode.parent.isBlack)
+    		return;
+    	if(newNode.parent.parent.leftChild==newNode.parent) { //case 1,2,3
+    		if(!newNode.parent.parent.rightChild.isBlack) { //case 1
+    				newNode.parent.isBlack=true;
+    				newNode.parent.parent.rightChild.isBlack=true;
+    				newNode.parent.parent.isBlack=false;
+    				enforceRBTreePropertiesAfterInsert(newNode.parent.parent); }
+    		
+    		else if(newNode.parent.parent.rightChild.isBlack==true || newNode.parent.parent.rightChild == null) { 
+    			//case 2,3
+    			if(newNode.parent.rightChild==newNode)//case 2
+    				rotate(newNode,newNode.parent);
+    			newNode.parent.isBlack=true; //case 3
+    			newNode.parent.parent.isBlack=false;
+    			rotate(newNode.parent,newNode.parent.parent);
+    		}
+    	}
+    	else if(newNode.parent.parent.rightChild==newNode.parent)  { //case 4,5,6
+    		if(!newNode.parent.parent.leftChild.isBlack) { //case 4
+				newNode.parent.isBlack=true;
+				newNode.parent.parent.leftChild.isBlack=true;
+				newNode.parent.parent.isBlack=false;
+				enforceRBTreePropertiesAfterInsert(newNode.parent.parent); }
+    		
+    		else if(newNode.parent.parent.leftChild.isBlack==true || newNode.parent.parent.leftChild == null) { 
+    			//case 5,6
+    			if(newNode.parent.leftChild==newNode)//case 5
+    				rotate(newNode,newNode.parent);
+    			newNode.parent.isBlack=true; //case 6
+    			newNode.parent.parent.isBlack=false;
+    			rotate(newNode.parent,newNode.parent.parent);
+    		}
+    	}	
+    	
