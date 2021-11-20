@@ -1,0 +1,62 @@
+<html><head><title>Tree Demo</title>
+<link rel="stylesheet" href="defaultStyle.css">
+<script src="tree.json"></script>
+<!-- Contents of tree.json plain text file:
+	let tree = {
+		data: 4,
+		left: {
+			data: 2,
+			left: { data: 1},
+			right: { data: 3}
+		},
+		right: {
+			data: 6,
+			left: { data: 5},
+			right: { data: 7}
+		},
+
+		name: "Michelle",
+		age: 84,
+		toString: () => "Laura is 84"
+	};
+
+ -->
+<script>
+
+function buttonClickHandler(x,y) {
+	//console.log( document.children[0] );
+	//console.log( document.querySelectorAll("input") );
+
+	let button = document.querySelectorAll("input[type=button]")[1];
+	button.style.backgroundColor = "orange";
+
+	let text = document.querySelectorAll("input[type=text]")[1];
+	let userNumber = text.value;
+
+	let outputP = document.querySelectorAll("#outputParagraph")[0];
+	outputP.innerHTML += "<p>2 x "+userNumber+" = " + (userNumber*2)+"</p>";
+	
+//	tree.name = "Gary";
+//	tree.age = 107;
+//	tree.toString = () => "Gary is 107";
+
+	outputP.innerHTML += "<p>"+tree.toString()+"</p>"
+}
+
+</script>
+</head><body>
+    <h1>Tree Demo Page</h1>
+    <h2 class="missplt">Intro</h2>
+    <p>This page has a tree structure.</p>
+    <h2 id="leafy-green">List of Veg</h2>
+    <ul>
+        <li class="missplt">advocado</li>
+        <li class="missplt">brocoli</li>
+        <li>celery</li>
+    </ul>
+    <h2> A Button </h2>
+    Number: <input type="text"></input>
+    <input type="button" value="Click Me" onclick="buttonClickHandler()">
+    <input type="button" value="Click Me2" onclick="buttonClickHandler()">
+    <p id="outputParagraph"></p>
+</body></html>
